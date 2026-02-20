@@ -1,0 +1,290 @@
+/* ===== Layout general ===== */
+
+.landing-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    box-sizing: border-box;
+}
+
+/* ===== Fuente global ===== */
+
+body {
+    font-family: "Bahnschrift", "Segoe UI", "Inter", "Roboto", sans-serif;
+}
+
+/* ===== Secciones ===== */
+
+.section {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.sectionTitle {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.sectionChat {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+}
+
+.chat-block {
+    display: flex;
+    /* 👈 necesario */
+    flex-direction: column;
+    align-items: center;
+    gap: 0rem;
+    /* 👈 controla separación */
+    padding: 0;
+}
+
+section.text-block.sectionInfo {
+    margin: 0px;
+    margin-bottom: 0;
+}
+
+.hero-svg img {
+
+    animation: hueRotate 6s linear infinite;
+
+}
+
+.sectionInfo {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 60px;
+    transition: color 0.6s ease;
+
+}
+
+.sectionFooter {
+    width: 120%;
+    height: auto;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #0f53ff;
+
+}
+
+/* ===== Imágenes ===== */
+
+.section img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0px;
+    object-fit: contain;
+    animation: pendulo 3s ease-in-out infinite;
+    transform-origin: top center;
+    /* Punto de giro */
+}
+
+.sectionTitle img {
+    max-width: 90%;
+    height: auto;
+    border-radius: 0px;
+    object-fit: contain;
+}
+
+.sectionChat img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0px;
+    object-fit: contain;
+    filter:
+        drop-shadow(0px 35px 25px rgba(0, 0, 0, 0.35)) drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.25));
+}
+
+.image-block img {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* ===== Texto ===== */
+
+.section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #0f53ff;
+}
+
+.sectionInfo h2 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 0.5;
+    min-height: 3.5rem;
+    margin: 0;
+    filter:
+        drop-shadow(0px 35px 25px rgba(0, 0, 0, 0.35)) drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.25));
+}
+
+.sectionFooter h2 {
+    font-size: 1.5rem;
+    color: white;
+    margin: 20;
+}
+
+.chat-block .sectionInfo h2 {
+    font-size: 1.5rem;
+    /* Más pequeño */
+    color: #0f53ff;
+    /* Nuevo color */
+    min-height: auto;
+}
+
+/* .sectionInfo h2:last-of-type::after {
+  content: "|";
+  margin-left: 5px;
+  animation: blink 0.8s infinite;
+} */
+
+.section p {
+    font-size: 1.1rem;
+    max-width: 700px;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.btn-primary img {
+    width: 250px;
+    /* ajusta a gusto */
+    height: auto;
+    display: block;
+}
+
+.btn-primary {
+    margin-top: 50px;
+    margin-bottom: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.2s ease;
+
+    animation: heartbeat 2.2s infinite;
+
+    filter:
+        drop-shadow(0px 35px 25px rgba(54, 4, 73, 0.35)) drop-shadow(0px 10px 10px rgba(29, 2, 12, 0.25));
+}
+
+.btn-primary:hover {
+    transform: scale(1.05);
+}
+
+/* ===== Responsive Tablet ===== */
+
+@media (min-width: 768px) {
+    .row-layout {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+        gap: 3rem;
+    }
+
+    .row-layout.reverse {
+        flex-direction: row-reverse;
+    }
+
+    .row-layout>* {
+        flex: 1;
+    }
+}
+
+/* ===== Responsive Desktop ===== */
+
+@media (min-width: 1024px) {
+    .section h2 {
+        font-size: 2.5rem;
+    }
+
+    .section p {
+        font-size: 1.2rem;
+    }
+}
+
+/* Animación */
+@keyframes pendulo {
+    0% {
+        transform: rotate(-6deg);
+    }
+
+    50% {
+        transform: rotate(6deg);
+    }
+
+    100% {
+        transform: rotate(-6deg);
+    }
+}
+
+@keyframes hueRotate {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+
+/* Cursor parpadeo */
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px) rotateY(-8deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotateY(8deg);
+    }
+
+    100% {
+        transform: translateY(0px) rotateY(-8deg);
+    }
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        filter:
+            brightness(1)
+            drop-shadow(0px 35px 25px rgba(54, 4, 73, 0.35))
+            drop-shadow(0px 10px 10px rgba(29, 2, 12, 0.25));
+    }
+    50% {
+        filter:
+            brightness(1.1)
+            drop-shadow(0px 35px 25px rgba(54, 4, 73, 0.35))
+            drop-shadow(0px 10px 10px rgba(29, 2, 12, 0.25));
+    }
+}
