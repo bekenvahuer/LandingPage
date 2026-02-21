@@ -1,3 +1,4 @@
+import React from 'react';
 import Hero from "../components/Hero";
 import ImageBlock from "../components/ImageBlock";
 import TextBlock from "../components/TextBlock";
@@ -7,7 +8,12 @@ import imagenHero from "../assets/Ribot.png";
 import imagenHero2 from "../assets/Ribot2.png";
 import "./LandingPage.css";
 
-const LandingPage: React.FC = () => {
+interface LandingPageProps {
+  onBookNow: () => void;
+}
+
+// ✅ CORRECCIÓN: Aplicar la interfaz Y destructurar onBookNow
+const LandingPage: React.FC<LandingPageProps> = ({ onBookNow }) => {
   return (
     <div className="landing-container">
 
@@ -37,7 +43,6 @@ const LandingPage: React.FC = () => {
             ["Con Ribot", "Almacena", "el historial", "de tus", "Clientes", "de forma", "Local "],
           ]}
           text=""
-          
         />
       </div>
 
@@ -48,9 +53,9 @@ const LandingPage: React.FC = () => {
         />
       </div>
 
-
+      {/* ✅ Ahora onBookNow sí existe */}
       <div className="sectionFooter">
-        <CTASection />
+        <CTASection onBookNow={onBookNow} />
       </div>
 
     </div>

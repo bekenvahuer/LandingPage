@@ -1,0 +1,535 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  min-height: 100vh;
+}
+
+/* ========================================
+   LANDING PAGE - CTA BUTTON (Con imagen)
+   ======================================== */
+.cta-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 40px 20px;
+  border-radius: 16px;
+  margin: 40px 20px;
+}
+
+.cta-section h2 {
+  color: white;
+  font-size: 24px;
+  text-align: center;
+  margin: 0;
+}
+
+/* Botón CTA con imagen */
+.cta-section .btn-primary {
+  margin-top: 50px;
+  margin-bottom: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+  animation: heartbeat 2.2s infinite;
+  filter: 
+    drop-shadow(0px 35px 25px rgba(54, 4, 73, 0.35)) 
+    drop-shadow(0px 10px 10px rgba(29, 2, 12, 0.25));
+}
+
+.cta-section .btn-primary:hover {
+  transform: scale(1.05);
+}
+
+.cta-section .btn-primary img {
+  width: 250px;
+  height: auto;
+  display: block;
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  14% { transform: scale(1.03); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.03); }
+  70% { transform: scale(1); }
+  100% { transform: scale(1); }
+}
+
+/* ========================================
+   FLOATING BUTTON
+   ======================================== */
+.floating-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.floating-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(102, 126, 234, 0.6);
+}
+
+/* ========================================
+   BOOKING PAGE - CONTENEDOR
+   ======================================== */
+.booking-page-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+}
+
+.booking-container {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 480px;
+  overflow: hidden;
+}
+
+.step-container {
+  padding: 32px 24px;
+}
+
+/* ========================================
+   BOOKING PAGE - HEADER
+   ======================================== */
+.header {
+  margin-bottom: 32px;
+}
+
+.header h1 {
+  font-size: 24px;
+  color: #1a202c;
+  margin-bottom: 8px;
+}
+
+.step-indicator {
+  color: #718096;
+  font-size: 14px;
+}
+
+.btn-back {
+  background: none;
+  border: none;
+  color: #667eea;
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom: 16px;
+  padding: 0;
+}
+
+.btn-back:hover {
+  text-decoration: underline;
+}
+
+/* ========================================
+   BOOKING PAGE - BOTONES (Continue, Confirm)
+   ======================================== */
+.btn-continue,
+.action-buttons .btn-primary {
+  width: 100%;
+  padding: 16px;
+  background: #1a202c;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 12px;
+}
+
+.btn-continue:hover:not(:disabled),
+.action-buttons .btn-primary:hover {
+  background: #2d3748;
+  transform: translateY(-2px);
+}
+
+.btn-continue:disabled {
+  background: #e2e8f0;
+  color: #a0aec0;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  width: 100%;
+  padding: 16px;
+  background: white;
+  color: #1a202c;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 12px;
+}
+
+.btn-secondary:hover {
+  border-color: #667eea;
+  background: #f7fafc;
+}
+
+/* ========================================
+   BOOKING PAGE - SERVICIOS
+   ======================================== */
+.services-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.service-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.service-item:hover {
+  border-color: #667eea;
+  background: #f7fafc;
+}
+
+.service-item.selected {
+  border-color: #667eea;
+  background: #f0f4ff;
+}
+
+.service-info h3 {
+  font-size: 16px;
+  color: #1a202c;
+  margin-bottom: 4px;
+}
+
+.duration {
+  color: #718096;
+  font-size: 14px;
+}
+
+.service-price {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a202c;
+}
+
+.checkmark {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  background: #667eea;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+/* ========================================
+   BOOKING PAGE - CALENDARIO
+   ======================================== */
+.calendar {
+  margin-bottom: 24px;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.calendar-header h2 {
+  font-size: 18px;
+  color: #1a202c;
+}
+
+.calendar-header button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #667eea;
+  padding: 0 8px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+
+.calendar-day-header {
+  text-align: center;
+  font-size: 12px;
+  color: #718096;
+  font-weight: 600;
+  padding: 8px;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.calendar-day:hover:not(.blank) {
+  background: #f0f4ff;
+  color: #667eea;
+}
+
+.calendar-day.selected {
+  background: #1a202c;
+  color: white;
+}
+
+.calendar-day.blank {
+  cursor: default;
+}
+
+/* ========================================
+   BOOKING PAGE - HORARIOS
+   ======================================== */
+.available-times {
+  margin-bottom: 24px;
+}
+
+.available-times h3 {
+  font-size: 16px;
+  color: #1a202c;
+  margin-bottom: 12px;
+}
+
+.time-slots {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.time-slot {
+  padding: 12px;
+  border: 2px solid #e2e8f0;
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.time-slot:hover {
+  border-color: #667eea;
+  background: #f7fafc;
+}
+
+.time-slot.selected {
+  background: #1a202c;
+  color: white;
+  border-color: #1a202c;
+}
+
+/* ========================================
+   BOOKING PAGE - FORMULARIO
+   ======================================== */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 14px;
+  color: #1a202c;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 12px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+/* ========================================
+   BOOKING PAGE - CONFIRMACIÓN
+   ======================================== */
+.confirmation {
+  text-align: center;
+}
+
+.success-icon {
+  width: 64px;
+  height: 64px;
+  background: #48bb78;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  margin: 0 auto 16px;
+}
+
+.booking-summary {
+  background: #f7fafc;
+  border-radius: 12px;
+  padding: 24px;
+  margin: 24px 0;
+  text-align: left;
+}
+
+.summary-section {
+  margin-bottom: 20px;
+}
+
+.summary-section:last-child {
+  margin-bottom: 0;
+}
+
+.summary-section h3 {
+  font-size: 12px;
+  color: #718096;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.summary-section p {
+  font-size: 14px;
+  color: #1a202c;
+  margin-bottom: 4px;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.summary-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.summary-item .icon {
+  font-size: 20px;
+}
+
+.summary-item strong {
+  display: block;
+  font-size: 12px;
+  color: #718096;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.summary-item p {
+  font-size: 14px;
+  color: #1a202c;
+  margin: 0;
+}
+
+.address {
+  color: #718096;
+  font-size: 13px;
+}
+
+.action-buttons {
+  margin-top: 24px;
+}
+
+/* ========================================
+   ANIMACIONES
+   ======================================== */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(10px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 640px) {
+  .booking-container {
+    border-radius: 0;
+    min-height: 100vh;
+  }
+  
+  .time-slots {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .cta-section .btn-primary img {
+    width: 200px;
+  }
+}

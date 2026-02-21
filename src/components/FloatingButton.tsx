@@ -1,19 +1,16 @@
-import { useState } from "react";
-import agendaImg from "../assets/agendaBtn.png";
-import "./FloatingButton.css";
+import React from 'react';
 
-const FloatingButton: React.FC = () => {
-  const [isActive, setIsActive] = useState(false);
+// ✅ Definir la interfaz de props
+interface FloatingButtonProps {
+  onClick: () => void;
+}
 
+// ✅ Aplicar la interfaz al componente
+const FloatingButton: React.FC<FloatingButtonProps> = ({ onClick }) => {
   return (
-    <div className="floating-wrapper">
-      <button
-        className={`floating-btn ${isActive ? "rotated" : ""}`}
-        onClick={() => setIsActive(!isActive)}
-      >
-        <img src={agendaImg} alt="Agendar cita" />
-      </button>
-    </div>
+    <button className="floating-btn" onClick={onClick}>
+      📅
+    </button>
   );
 };
 

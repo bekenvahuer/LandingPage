@@ -52,9 +52,8 @@ body {
     /* 👈 necesario */
     flex-direction: column;
     align-items: center;
-    gap: 0rem;
-    /* 👈 controla separación */
-    padding: 0;
+    gap: 2rem;
+    padding: 0px;
 }
 
 section.text-block.sectionInfo {
@@ -171,7 +170,6 @@ section.text-block.sectionInfo {
 
 .btn-primary img {
     width: 250px;
-    /* ajusta a gusto */
     height: auto;
     display: block;
 }
