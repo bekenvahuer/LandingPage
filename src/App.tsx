@@ -8,17 +8,18 @@ function App() {
   const [isBooking, setIsBooking] = useState(false);
 
   const handleStartBooking = () => setIsBooking(true);
-  const handleBackToHome = () => setIsBooking(false);
+  const handleBackToHome = () => {
+    setIsBooking(false);
+  };
 
   return (
     <>
       {isBooking ? (
-        <BookingPage />
+        <BookingPage onClose={handleBackToHome} />
       ) : (
         <>
-          {/* ✅ Ahora TypeScript sabe que onBookNow es válido */}
           <LandingPage onBookNow={handleStartBooking} />
-          {/* ✅ Ahora TypeScript sabe que onClick es válido */}
+          <FloatingButton onBookNow={handleStartBooking} />
         </>
       )}
     </>

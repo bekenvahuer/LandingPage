@@ -499,6 +499,57 @@ body {
 }
 
 /* ========================================
+   BOTÓN DE CIERRE (Booking Page)
+   ======================================== */
+.btn-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid #e2e8f0;
+  border-radius: 50%;
+  font-size: 18px;
+  color: #718096;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 10;
+  line-height: 1;
+}
+
+.btn-close:hover {
+  background: #fff;
+  border-color: #667eea;
+  color: #667eea;
+  transform: rotate(90deg);
+}
+
+.btn-close:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+}
+
+/* Ajuste para que el contenedor tenga posición relativa */
+.booking-container {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 480px;
+  overflow: hidden;
+  position: relative;  /* ✅ Necesario para posicionar el btn-close */
+}
+
+/* Ajuste del padding del step-container para no tapar contenido */
+.step-container {
+  padding: 48px 24px 32px;  /* ✅ Más padding arriba para el botón de cierre */
+}
+
+/* ========================================
    ANIMACIONES
    ======================================== */
 .animate-fade-in {

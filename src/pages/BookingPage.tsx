@@ -5,7 +5,11 @@ import ContactDetails from '../components/booking/ContactDetails';
 import Confirmation from '../components/booking/Confirmation';
 import type { BookingData, Service } from '../types/booking';
 
-const BookingPage: React.FC = () => {
+interface BookingPageProps {
+  onClose: () => void;  // ✅ Nueva prop para cerrar
+}
+
+const BookingPage: React.FC<BookingPageProps> = ({ onClose }) => {
   const [currentStep, setCurrentStep] = useState<number>(1);
   const [bookingData, setBookingData] = useState<BookingData>({
     service: null,
@@ -20,6 +24,14 @@ const BookingPage: React.FC = () => {
 
   const updateBookingData = (field: keyof BookingData, value: any) => {
     setBookingData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const resetBooking = () => {
+    setBookingData({
+      service: null, date: null, time: null,
+      firstName: '', lastName: '', email: '', phone: '', specialRequests: ''
+    });
+    setCurrentStep(1);
   };
 
   const renderStep = () => {
@@ -63,12 +75,8 @@ const BookingPage: React.FC = () => {
           <Confirmation
             bookingData={bookingData}
             onBackToHome={() => {
-              // Resetear datos si quieres empezar de cero
-              setBookingData({
-                service: null, date: null, time: null,
-                firstName: '', lastName: '', email: '', phone: '', specialRequests: ''
-              });
-              setCurrentStep(1);
+              resetBooking();
+              onClose();  // ✅ Volver a LandingPage después de confirmar
             }}
           />
         );
@@ -80,6 +88,11 @@ const BookingPage: React.FC = () => {
   return (
     <div className="booking-page-wrapper">
       <div className="booking-container">
+        {/* ✅ Botón de cierre en el header */}
+        <button className="btn-close" onClick={onClose} aria-label="Cerrar agendamiento">
+          ✕
+        </button>
+        
         {renderStep()}
       </div>
     </div>

@@ -1,16 +1,18 @@
 import React from 'react';
+import agendaImg from "../assets/agendaBtn.png";
+import "./FloatingButton.css";
 
-// ✅ Definir la interfaz de props
 interface FloatingButtonProps {
-  onClick: () => void;
+  onBookNow: () => void;  // ✅ Cambiar onClick → onBookNow
 }
 
-// ✅ Aplicar la interfaz al componente
-const FloatingButton: React.FC<FloatingButtonProps> = ({ onClick }) => {
+const FloatingButton: React.FC<FloatingButtonProps> = ({ onBookNow }) => {
   return (
-    <button className="floating-btn" onClick={onClick}>
-      📅
-    </button>
+    <div className="floating-wrapper">
+      <button className="floating-btn" onClick={onBookNow}>
+        <img src={agendaImg} alt="Agendar cita" />
+      </button>
+    </div >
   );
 };
 
