@@ -1,7 +1,7 @@
 /* 🔥 Wrapper tiene la sombra */
 .floating-wrapper {
     position: fixed;
-    bottom: 320px;
+    bottom: 400px;
     right: 35px;
     z-index: 9999;
 
