@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ServiceSelection from '../components/booking/ServiceSelection';
 import DateTimeSelection from '../components/booking/DateTimeSelection';
 import ContactDetails from '../components/booking/ContactDetails';
 import Confirmation from '../components/booking/Confirmation';
 import type { BookingData, Service } from '../types/booking';
 
-interface BookingPageProps {
-  onClose: () => void;  // ✅ Nueva prop para cerrar
-}
-
-const BookingPage: React.FC<BookingPageProps> = ({ onClose }) => {
+const BookingPage: React.FC = () => {
+  const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState<number>(1);
   const [bookingData, setBookingData] = useState<BookingData>({
     service: null,
@@ -76,7 +74,7 @@ const BookingPage: React.FC<BookingPageProps> = ({ onClose }) => {
             bookingData={bookingData}
             onBackToHome={() => {
               resetBooking();
-              onClose();  // ✅ Volver a LandingPage después de confirmar
+              handleClose();
             }}
           />
         );
@@ -85,11 +83,14 @@ const BookingPage: React.FC<BookingPageProps> = ({ onClose }) => {
     }
   };
 
+  const handleClose = () => {
+    navigate('/');  // ✅ Volver a la landing page
+  };
+
   return (
     <div className="booking-page-wrapper">
       <div className="booking-container">
-        {/* ✅ Botón de cierre en el header */}
-        <button className="btn-close" onClick={onClose} aria-label="Cerrar agendamiento">
+        <button className="btn-close" onClick={handleClose} aria-label="Cerrar agendamiento">
           ✕
         </button>
         

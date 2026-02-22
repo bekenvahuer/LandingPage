@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';  // ✅ Importar useNavigate
 import Hero from "../components/Hero";
 import ImageBlock from "../components/ImageBlock";
 import TextBlock from "../components/TextBlock";
@@ -8,12 +9,12 @@ import imagenHero from "../assets/Ribot.png";
 import imagenHero2 from "../assets/Ribot2.png";
 import "./LandingPage.css";
 
-interface LandingPageProps {
-  onBookNow: () => void;
-}
+const LandingPage: React.FC = () => {
+  const navigate = useNavigate();  // ✅ Hook para navegar
 
-// ✅ CORRECCIÓN: Aplicar la interfaz Y destructurar onBookNow
-const LandingPage: React.FC<LandingPageProps> = ({ onBookNow }) => {
+  const handleBookNow = () => {
+    navigate('/booking');  // ✅ Navegar a /booking
+  };
   return (
     <div className="landing-container">
 
@@ -55,7 +56,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onBookNow }) => {
 
       {/* ✅ Ahora onBookNow sí existe */}
       <div className="sectionFooter">
-        <CTASection onBookNow={onBookNow} />
+        <CTASection onBookNow={handleBookNow} />
       </div>
 
     </div>

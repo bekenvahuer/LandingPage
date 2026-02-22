@@ -1,28 +1,37 @@
-import { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from "./pages/LandingPage";
 import FloatingButton from "./components/FloatingButton";
 import BookingPage from "./pages/BookingPage";
 import './App.css';
 
 function App() {
-  const [isBooking, setIsBooking] = useState(false);
-
-  const handleStartBooking = () => setIsBooking(true);
-  const handleBackToHome = () => {
-    setIsBooking(false);
-  };
-
   return (
-    <>
-      {isBooking ? (
-        <BookingPage onClose={handleBackToHome} />
-      ) : (
-        <>
-          <LandingPage onBookNow={handleStartBooking} />
-          <FloatingButton onBookNow={handleStartBooking} />
-        </>
-      )}
-    </>
+    <Router>
+      <Routes>
+        {/* Ruta principal - Landing Page */}
+        <Route 
+          path="/" 
+          element={
+            <>
+              <LandingPage />
+              <FloatingButton />
+            </>
+          } 
+        />
+        
+        {/* Ruta de booking - Página de agendamiento */}
+        <Route 
+          path="/booking" 
+          element={<BookingPage />} 
+        />
+        
+        {/* Ruta alternativa (opcional) */}
+        <Route 
+          path="/agendar" 
+          element={<BookingPage />} 
+        />
+      </Routes>
+    </Router>
   );
 }
 

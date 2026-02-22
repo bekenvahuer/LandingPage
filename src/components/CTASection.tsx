@@ -1,3 +1,4 @@
+import React from 'react';
 import agendaImg from "../assets/agenda.png";
 
 interface CTASectionProps {
