@@ -43,9 +43,8 @@ body {
   justify-content: center;
   transition: transform 0.2s ease;
   animation: heartbeat 2.2s infinite;
-  filter: 
-    drop-shadow(0px 35px 25px rgba(54, 4, 73, 0.35)) 
-    drop-shadow(0px 10px 10px rgba(29, 2, 12, 0.25));
+  filter:
+    drop-shadow(0px 35px 25px rgba(54, 4, 73, 0.35)) drop-shadow(0px 10px 10px rgba(29, 2, 12, 0.25));
 }
 
 .cta-section .btn-primary:hover {
@@ -59,12 +58,29 @@ body {
 }
 
 @keyframes heartbeat {
-  0% { transform: scale(1); }
-  14% { transform: scale(1.03); }
-  28% { transform: scale(1); }
-  42% { transform: scale(1.03); }
-  70% { transform: scale(1); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+
+  14% {
+    transform: scale(1.03);
+  }
+
+  28% {
+    transform: scale(1);
+  }
+
+  42% {
+    transform: scale(1.03);
+  }
+
+  70% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* ========================================
@@ -436,6 +452,24 @@ body {
   text-align: left;
 }
 
+.booking-loading {
+  background: #f0f4ff;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.booking-error {
+  background: #ffe6e6;
+  color: #c62828;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
 .summary-section {
   margin-bottom: 20px;
 }
@@ -541,12 +575,14 @@ body {
   width: 100%;
   max-width: 480px;
   overflow: hidden;
-  position: relative;  /* ✅ Necesario para posicionar el btn-close */
+  position: relative;
+  /* ✅ Necesario para posicionar el btn-close */
 }
 
 /* Ajuste del padding del step-container para no tapar contenido */
 .step-container {
-  padding: 48px 24px 32px;  /* ✅ Más padding arriba para el botón de cierre */
+  padding: 48px 24px 32px;
+  /* ✅ Más padding arriba para el botón de cierre */
 }
 
 /* ========================================
@@ -557,13 +593,14 @@ body {
 }
 
 @keyframes fadeIn {
-  from { 
-    opacity: 0; 
-    transform: translateY(10px); 
+  from {
+    opacity: 0;
+    transform: translateY(10px);
   }
-  to { 
-    opacity: 1; 
-    transform: translateY(0); 
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -575,11 +612,11 @@ body {
     border-radius: 0;
     min-height: 100vh;
   }
-  
+
   .time-slots {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .cta-section .btn-primary img {
     width: 200px;
   }
