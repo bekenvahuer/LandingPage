@@ -123,15 +123,6 @@ body {
   padding: 20px;
 }
 
-.booking-container {
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  width: 100%;
-  max-width: 480px;
-  overflow: hidden;
-}
-
 .step-container {
   padding: 32px 24px;
 }
@@ -567,16 +558,19 @@ body {
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
 }
 
-/* Ajuste para que el contenedor tenga posición relativa */
 .booking-container {
   background: white;
   border-radius: 16px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   width: 100%;
   max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
   overflow: hidden;
   position: relative;
-  /* ✅ Necesario para posicionar el btn-close */
+  margin: 20px auto;
+
 }
 
 /* Ajuste del padding del step-container para no tapar contenido */
@@ -609,8 +603,24 @@ body {
    ======================================== */
 @media (max-width: 640px) {
   .booking-container {
-    border-radius: 0;
-    min-height: 100vh;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-height: 100vh;
+    margin: 0;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+  }
+
+  .services-list {
+    padding: 20px;
   }
 
   .time-slots {

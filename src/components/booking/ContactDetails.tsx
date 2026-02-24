@@ -13,17 +13,17 @@ const ContactDetails: React.FC<ContactDetailsProps> = ({ formData, onUpdateField
   return (
     <div className="step-container animate-fade-in">
       <div className="header">
-        <button className="btn-back" onClick={onBack}>← Back</button>
-        <h1>Your Information</h1>
-        <p className="step-indicator">Step 3 of 3: Contact Details</p>
+        <button className="btn-back" onClick={onBack}>← Volver</button>
+        <h1>Tus Datos</h1>
+        <p className="step-indicator">Paso 3 de 3: Datos de Contacto</p>
       </div>
 
       <form onSubmit={handleSubmit} className="contact-form">
         <div className="form-group">
-          <label>First Name *</label>
+          <label>Nombre *</label>
           <input
             type="text"
-            placeholder="Enter first name"
+            placeholder="Ingresa tu nombre"
             value={firstName}
             onChange={(e) => onUpdateField('firstName', e.target.value)}
             required
@@ -31,27 +31,27 @@ const ContactDetails: React.FC<ContactDetailsProps> = ({ formData, onUpdateField
         </div>
         {/* Repite para Last Name, Email, Phone... */}
         <div className="form-group">
-          <label>Last Name *</label>
+          <label>Apellido *</label>
           <input
             type="text"
-            placeholder="Enter last name"
+            placeholder="Ingresa tu apellido"
             value={lastName}
             onChange={(e) => onUpdateField('lastName', e.target.value)}
             required
           />
         </div>
         <div className="form-group">
-          <label>Email *</label>
+          <label>Correo Electrónico *</label>
           <input
             type="email"
-            placeholder="your@email.com"
+            placeholder="correo@ejemplo.com"
             value={email}
             onChange={(e) => onUpdateField('email', e.target.value)}
             required
           />
         </div>
         <div className="form-group">
-          <label>Phone Number *</label>
+          <label>Número de Teléfono *</label>
           <input
             type="tel"
             placeholder="(555) 123-4567"
@@ -61,9 +61,9 @@ const ContactDetails: React.FC<ContactDetailsProps> = ({ formData, onUpdateField
           />
         </div>
         <div className="form-group">
-          <label>Special Requests (Optional)</label>
+          <label>Solicitudes Especiales (Opcional)</label>
           <textarea
-            placeholder="Any preferences?"
+            placeholder="¿Tienes alguna preferencia?"
             value={specialRequests}
             onChange={(e) => onUpdateField('specialRequests', e.target.value)}
             rows={3}
@@ -71,7 +71,7 @@ const ContactDetails: React.FC<ContactDetailsProps> = ({ formData, onUpdateField
         </div>
 
         <button type="submit" className="btn-continue" disabled={!canContinue}>
-          Confirm Booking
+          Confirmar Reserva
         </button>
       </form>
     </div>

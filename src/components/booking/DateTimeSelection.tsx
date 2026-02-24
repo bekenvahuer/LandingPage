@@ -32,9 +32,9 @@ const DateTimeSelection: React.FC<DateTimeSelectionProps> = ({
   return (
     <div className="step-container animate-fade-in">
       <div className="header">
-        <button className="btn-back" onClick={onBack}>← Back</button>
-        <h1>Select Date & Time</h1>
-        <p className="step-indicator">Step 2 of 3: Choose Your Slot</p>
+        <button className="btn-back" onClick={onBack}>← Volver</button>
+        <h1>Seleccionar Fecha y Hora</h1>
+        <p className="step-indicator">Paso 2 de 3: Elige tu Horario</p>
       </div>
 
       <div className="calendar">
@@ -62,7 +62,7 @@ const DateTimeSelection: React.FC<DateTimeSelectionProps> = ({
       </div>
 
       <div className="available-times">
-        <h3>Available Times</h3>
+        <h3>Horarios Disponibles</h3>
         <div className="time-slots">
           {timeSlots.map((time) => (
             <button
@@ -77,7 +77,7 @@ const DateTimeSelection: React.FC<DateTimeSelectionProps> = ({
       </div>
 
       <button className="btn-continue" onClick={onNext} disabled={!selectedDate || !selectedTime}>
-        Continue
+        Continuar
       </button>
     </div>
   );
