@@ -116,6 +116,7 @@ body {
    ======================================== */
 .booking-page-wrapper {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
@@ -571,6 +572,20 @@ body {
   position: relative;
   margin: 20px auto;
 
+}
+
+.booking-logo {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  padding: 20px 0;
+}
+
+.booking-hero-image {
+  width: 20%;
+  height: auto;
+  margin-top: 20px;
+  border-radius: 0px;
 }
 
 /* Ajuste del padding del step-container para no tapar contenido */

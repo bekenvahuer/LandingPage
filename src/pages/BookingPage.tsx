@@ -6,6 +6,7 @@ import ContactDetails from '../components/booking/ContactDetails';
 import Confirmation from '../components/booking/Confirmation';
 import type { BookingData, Service } from '../types/booking';
 import { agendarCita } from '../services/eventsService';
+import imagenHero from "../assets/ClickCita.png";
 
 const BookingPage: React.FC = () => {
   const navigate = useNavigate();
@@ -160,6 +161,10 @@ const BookingPage: React.FC = () => {
         )}
 
         {renderStep()}
+        
+      </div>
+      <div className="booking-logo">
+        <img src={imagenHero} alt="Imagen de reserva" className="booking-hero-image" />
       </div>
     </div>
   );
