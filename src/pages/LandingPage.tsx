@@ -40,14 +40,14 @@ const LandingPage: React.FC = () => {
             ["Con Ribot", "Automatiza", "las reservas", "de", "Citas"],
             ["Administra", "Tareas", "24/7", "a un", "bajo Costo"],
             ["Con Ribot", "Transforma", "tus flujos", "de", "trabajo", "eficientemente"],
-            ["Con Ribot", "Automatiza", "la revision", "de", "Comprobantes", "de Pago"],
-            ["Con Ribot", "Almacena", "el historial", "de tus", "Clientes", "de forma", "Local "],
+            ["Con Ribot", "Automatiza", "la revisión", "de", "Comprobantes", "de Pago"],
+            ["Con Ribot", "Almacena", "el historial", "de tus", "Clientes", "de forma", "Local"],
           ]}
           text=""
         />
       </div>
 
-      <div className="section">
+      <div className="section2">
         <ImageBlock
           src={imagenHero2}
           alt="Imagen 2"

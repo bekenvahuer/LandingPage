@@ -673,7 +673,7 @@ body {
     max-width: 100%;
     display: flex;
     flex-direction: column;
-    
+
   }
 
   .services-list {
@@ -686,5 +686,26 @@ body {
 
   .cta-section .btn-primary img {
     width: 200px;
+  }
+
+  .sectionTitle img {
+    max-width: 80%;
+
+  }
+
+  .section img {
+    max-width: 100%;
+  }
+
+  .sectionChat img {
+    max-width: 100%;
+  }
+
+  .floating-btn img {
+    width: 90px;
+  }
+
+  .floating-wrapper {
+    right: 35px;
   }
 }

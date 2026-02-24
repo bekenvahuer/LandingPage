@@ -28,6 +28,15 @@ body {
     text-align: center;
 }
 
+.section2 {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
 .sectionTitle {
     width: 100%;
     max-width: 1200px;
@@ -94,7 +103,17 @@ section.text-block.sectionInfo {
 /* ===== Imágenes ===== */
 
 .section img {
-    max-width: 100%;
+    max-width: 40%;
+    height: auto;
+    border-radius: 0px;
+    object-fit: contain;
+    animation: pendulo 3s ease-in-out infinite;
+    transform-origin: top center;
+    /* Punto de giro */
+}
+
+.section2 img {
+    max-width: 80%;
     height: auto;
     border-radius: 0px;
     object-fit: contain;
@@ -104,14 +123,14 @@ section.text-block.sectionInfo {
 }
 
 .sectionTitle img {
-    max-width: 90%;
+    max-width: 60%;
     height: auto;
     border-radius: 0px;
     object-fit: contain;
 }
 
 .sectionChat img {
-    max-width: 100%;
+    max-width: 50%;
     height: auto;
     border-radius: 0px;
     object-fit: contain;
@@ -211,6 +230,11 @@ section.text-block.sectionInfo {
     .row-layout>* {
         flex: 1;
     }
+
+    .sectionTitle img {
+        max-width: 80%;
+
+    }
 }
 
 /* ===== Responsive Desktop ===== */
@@ -223,6 +247,7 @@ section.text-block.sectionInfo {
     .section p {
         font-size: 1.2rem;
     }
+
 }
 
 /* Animación */
@@ -273,16 +298,15 @@ section.text-block.sectionInfo {
 }
 
 @keyframes heartbeat {
-    0%, 100% {
+
+    0%,
+    100% {
         filter:
-            brightness(1)
-            drop-shadow(0px 35px 25px rgba(54, 4, 73, 0.35))
-            drop-shadow(0px 10px 10px rgba(29, 2, 12, 0.25));
+            brightness(1) drop-shadow(0px 35px 25px rgba(54, 4, 73, 0.35)) drop-shadow(0px 10px 10px rgba(29, 2, 12, 0.25));
     }
+
     50% {
         filter:
-            brightness(1.1)
-            drop-shadow(0px 35px 25px rgba(54, 4, 73, 0.35))
-            drop-shadow(0px 10px 10px rgba(29, 2, 12, 0.25));
+            brightness(1.1) drop-shadow(0px 35px 25px rgba(54, 4, 73, 0.35)) drop-shadow(0px 10px 10px rgba(29, 2, 12, 0.25));
     }
 }

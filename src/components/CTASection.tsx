@@ -11,7 +11,7 @@ const CTASection: React.FC<CTASectionProps> = ({ onBookNow }) => {
       <button className="btn-primary" onClick={onBookNow}>
         <img src={agendaImg} alt="Agendar cita" />
       </button>
-      <h2>Ribot es hecho 100% en Medellin</h2>
+      <h2>Ribot es hecho 100% en Medellín</h2>
     </section>
   );
 };
