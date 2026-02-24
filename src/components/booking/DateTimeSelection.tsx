@@ -12,7 +12,7 @@ const DateTimeSelection: React.FC<DateTimeSelectionProps> = ({
 }) => {
 
   const [currentMonth, setCurrentMonth] = useState(new Date());
-  const [eventsCache, setEventsCache] = useState<Map<string, any[]>>(new Map());
+  const [allEvents, setAllEvents] = useState<any[]>([]);
   const [bookedHours, setBookedHours] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
 
@@ -58,27 +58,24 @@ const DateTimeSelection: React.FC<DateTimeSelectionProps> = ({
     onSelectTime("");
     setBookedHours([]);
 
-    // ✅ Si ya está en cache → usarlo
-    if (eventsCache.has(formattedDate)) {
-      processBookedHours(eventsCache.get(formattedDate)!);
-      return;
-    }
-
     try {
       setLoading(true);
 
-      // 🔥 Trae TODOS los eventos
-      const allEvents = await obtenerEventosPorFecha();
+      let events: any[];
 
-      // 🔥 Filtrar solo los del día seleccionado
-      const filteredEvents = allEvents.filter((event: any) =>
+      // 🔥 Si aún no hemos consultado la API
+      if (allEvents.length === 0) {
+        const response = await obtenerEventosPorFecha();
+        setAllEvents(response);
+        events = response; // ← aquí ya es array seguro
+      } else {
+        events = allEvents; // ← también es array seguro
+      }
+
+      // 🔥 Filtrar desde memoria (no desde API)
+      const filteredEvents = events.filter((event) =>
         event.start.startsWith(formattedDate)
       );
-
-      // Guardar SOLO los de esa fecha en cache
-      const newCache = new Map(eventsCache);
-      newCache.set(formattedDate, filteredEvents);
-      setEventsCache(newCache);
 
       processBookedHours(filteredEvents);
 
