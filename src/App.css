@@ -576,7 +576,7 @@ body {
 
 .booking-logo {
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
   padding: 20px 0;
 }
@@ -592,6 +592,18 @@ body {
 .step-container {
   padding: 48px 24px 32px;
   /* ✅ Más padding arriba para el botón de cierre */
+}
+
+.calendar-day.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.time-slot.disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 /* ========================================
