@@ -172,27 +172,47 @@ const DateTimeSelection: React.FC<DateTimeSelectionProps> = ({
       <div className="available-times">
         <h3>Horarios Disponibles</h3>
 
-        {loading && <p>Cargando disponibilidad...</p>}
+        {/* 🔹 Si no hay fecha seleccionada */}
+        {!selectedDate && (
+          <p className="info-text">Selecciona una fecha para ver horarios disponibles</p>
+        )}
 
-        <div className="time-slots">
-          {timeSlots.map((time) => {
+        {/* 🔹 Loading */}
+        {selectedDate && loading && (
+          <div className="loading-container">
+            <div className="spinner"></div>
+            <p>Consultando disponibilidad...</p>
+          </div>
+        )}
 
-            const isBooked = bookedHours.includes(time);
+        {/* 🔹 Mostrar horarios solo cuando termine loading */}
+        {selectedDate && !loading && (
+          <>
+            {timeSlots.filter(time => !bookedHours.includes(time)).length === 0 ? (
+              <p className="no-slots">No hay horarios disponibles para este día</p>
+            ) : (
+              <div className="time-slots animate-fade-in">
+                {timeSlots.map((time) => {
 
-            return (
-              <button
-                key={time}
-                disabled={isBooked}
-                className={`time-slot 
+                  const isBooked = bookedHours.includes(time);
+
+                  return (
+                    <button
+                      key={time}
+                      disabled={isBooked}
+                      className={`time-slot 
                   ${selectedTime === time ? 'selected' : ''} 
                   ${isBooked ? 'disabled' : ''}`}
-                onClick={() => !isBooked && onSelectTime(time)}
-              >
-                {time}
-              </button>
-            );
-          })}
-        </div>
+                      onClick={() => !isBooked && onSelectTime(time)}
+                    >
+                      {time}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+          </>
+        )}
       </div>
 
       <button
