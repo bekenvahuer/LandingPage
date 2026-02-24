@@ -20,7 +20,7 @@ const Confirmation: React.FC<ConfirmationProps> = ({ bookingData, onBackToHome }
       <div className="booking-summary">
         <div className="summary-section">
           <h3>SERVICIO</h3>
-          <p>{service?.name}</p>
+          <p>{service?.nickname}</p>
         </div>
         <div className="summary-grid">
           <div className="summary-item">
