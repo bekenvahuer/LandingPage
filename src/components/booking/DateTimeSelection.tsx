@@ -139,7 +139,7 @@ const DateTimeSelection: React.FC<DateTimeSelectionProps> = ({
 
         <div className="calendar-grid">
 
-          {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((day, i) => (
+          {['D', 'L', 'M', 'Mi', 'J', 'V', 'S'].map((day, i) => (
             <div key={i} className="calendar-day-header">{day}</div>
           ))}
 
