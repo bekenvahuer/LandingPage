@@ -24,8 +24,14 @@ const BookingPage: React.FC = () => {
     specialRequests: ''
   });
 
-  const updateBookingData = (field: keyof BookingData, value: any) => {
-    setBookingData(prev => ({ ...prev, [field]: value }));
+  const updateBookingData = (
+    field: keyof BookingData,
+    value: string | Service | null
+  ) => {
+    setBookingData(prev => ({
+      ...prev,
+      [field]: value
+    }));
   };
 
   const resetBooking = () => {
@@ -51,7 +57,7 @@ const BookingPage: React.FC = () => {
           <DateTimeSelection
             selectedDate={bookingData.date}
             selectedTime={bookingData.time}
-            onSelectDate={(date: Date) => updateBookingData('date', date)}
+            onSelectDate={(date: string) => updateBookingData('date', date)}
             onSelectTime={(time: string) => updateBookingData('time', time)}
             onNext={() => setCurrentStep(3)}
             onBack={() => setCurrentStep(1)}
@@ -161,7 +167,7 @@ const BookingPage: React.FC = () => {
         )}
 
         {renderStep()}
-        
+
       </div>
       <div className="booking-logo">
         <img src={imagenHero} alt="Imagen de reserva" className="booking-hero-image" />

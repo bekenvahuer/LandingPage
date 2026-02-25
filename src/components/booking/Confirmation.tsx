@@ -4,9 +4,12 @@ import type { ConfirmationProps } from '../../types/booking';
 const Confirmation: React.FC<ConfirmationProps> = ({ bookingData, onBackToHome }) => {
   const { service, date, time } = bookingData;
 
-  const formatDate = (date: Date | null) => {
-    if (!date) return '';
-    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  const formatDate = (dateString: string | null) => {
+    if (!dateString) return "";
+
+    const [year, month, day] = dateString.split("-");
+
+    return `${day}/${month}/${year}`;
   };
 
   return (
@@ -25,7 +28,7 @@ const Confirmation: React.FC<ConfirmationProps> = ({ bookingData, onBackToHome }
         <div className="summary-grid">
           <div className="summary-item">
             <span className="icon">📅</span>
-            <div><strong>FECHA</strong><p>{formatDate(date)}</p></div>
+            <div><strong>FECHA</strong><p>{formatDate(bookingData.date)}</p></div>
           </div>
           <div className="summary-item">
             <span className="icon">🕐</span>
