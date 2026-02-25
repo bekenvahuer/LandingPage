@@ -28,7 +28,7 @@ const Confirmation: React.FC<ConfirmationProps> = ({ bookingData, onBackToHome }
         <div className="summary-grid">
           <div className="summary-item">
             <span className="icon">📅</span>
-            <div><strong>FECHA</strong><p>{formatDate(bookingData.date)}</p></div>
+            <div><strong>FECHA</strong><p>{formatDate(date)}</p></div>
           </div>
           <div className="summary-item">
             <span className="icon">🕐</span>
