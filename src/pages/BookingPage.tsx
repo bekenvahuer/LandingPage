@@ -103,28 +103,34 @@ const BookingPage: React.FC = () => {
       setLoading(true);
       setError(null);
 
-      // Construir fecha inicio
-      const startDate = new Date(bookingData.date);
-      const [hours, minutes] = bookingData.time.split(":");
+      // 🔥 Obtener duración en minutos (ej: "15 min" → 15)
+      const durationMinutes = parseInt(
+        bookingData.service.duration.replace(/\D/g, "")
+      );
 
-      startDate.setHours(Number(hours));
-      startDate.setMinutes(Number(minutes));
-      startDate.setSeconds(0);
+      // 🔥 Separar hora seleccionada
+      const [hourStr, minuteStr] = bookingData.time.split(":");
 
-      // ✅ Usar duración real del servicio
-      // Si duration es string tipo "45 min"
-      const durationMinutes =
-        typeof bookingData.service.duration === "string"
-          ? parseInt(bookingData.service.duration)
-          : bookingData.service.duration;
+      let hour = parseInt(hourStr);
+      let minute = parseInt(minuteStr);
 
-      const endDate = new Date(startDate);
-      endDate.setMinutes(startDate.getMinutes() + durationMinutes);
+      // 🔥 Sumar duración
+      minute += durationMinutes;
+
+      if (minute >= 60) {
+        hour += Math.floor(minute / 60);
+        minute = minute % 60;
+      }
+
+      // 🔥 Construir fechas SIN usar Date()
+      const start = `${bookingData.date} ${bookingData.time}:00`;
+
+      const end = `${bookingData.date} ${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}:00`;
 
       const payload = {
         title: `${bookingData.service.name}/@BarberShop1046/Client:bekenvahuer rey gaona`,
-        start: startDate.toISOString().slice(0, 19).replace("T", " "),
-        end: endDate.toISOString().slice(0, 19).replace("T", " "),
+        start: start,
+        end: end,
         employee: `${bookingData.firstName} - ${bookingData.lastName} - ${bookingData.email} - ${bookingData.phone} - ${bookingData.specialRequests}`,
         payrollValue: "9000",
         servicesValue: "20000",
