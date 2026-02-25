@@ -8,7 +8,7 @@ export interface Service {
 
 export interface BookingData {
     service: Service | null;
-    date: Date | null;
+    date: string | null;  
     time: string | null;
     firstName: string;
     lastName: string;
@@ -24,9 +24,9 @@ export interface ServiceSelectionProps {
 }
 
 export interface DateTimeSelectionProps {
-    selectedDate: Date | null;
+    selectedDate: string | null;
     selectedTime: string | null;
-    onSelectDate: (date: Date) => void;
+    onSelectDate: (date: string) => void;
     onSelectTime: (time: string) => void;
     onNext: () => void;
     onBack: () => void;

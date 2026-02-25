@@ -28,9 +28,14 @@ const DateTimeSelection: React.FC<DateTimeSelectionProps> = ({
 
   const isDateSelected = (day: number) => {
     if (!selectedDate) return false;
-    return selectedDate.getDate() === day &&
-      selectedDate.getMonth() === currentMonth.getMonth() &&
-      selectedDate.getFullYear() === currentMonth.getFullYear();
+
+    const year = currentMonth.getFullYear();
+    const month = String(currentMonth.getMonth() + 1).padStart(2, "0");
+    const dayStr = String(day).padStart(2, "0");
+
+    const dateToCompare = `${year}-${month}-${dayStr}`;
+
+    return selectedDate === dateToCompare;
   };
 
   // 🔥 Procesar horas ocupadas
@@ -43,19 +48,16 @@ const DateTimeSelection: React.FC<DateTimeSelectionProps> = ({
     setBookedHours(hours);
   };
 
-  // 🔥 Handler actualizado
   const handleSelectDate = async (day: number) => {
 
-    const date = new Date(
-      currentMonth.getFullYear(),
-      currentMonth.getMonth(),
-      day
-    );
+    const year = currentMonth.getFullYear();
+    const month = String(currentMonth.getMonth() + 1).padStart(2, "0");
+    const dayStr = String(day).padStart(2, "0");
 
-    const formattedDate = date.toISOString().split("T")[0];
+    const formattedDate = `${year}-${month}-${dayStr}`;
 
-    onSelectDate(date);
-    onSelectTime("");
+    onSelectDate(formattedDate); // 🔥 solo string
+    onSelectTime(""); // reset hora
     setBookedHours([]);
 
     try {
@@ -63,16 +65,14 @@ const DateTimeSelection: React.FC<DateTimeSelectionProps> = ({
 
       let events: any[];
 
-      // 🔥 Si aún no hemos consultado la API
       if (allEvents.length === 0) {
         const response = await obtenerEventosPorFecha();
         setAllEvents(response);
-        events = response; // ← aquí ya es array seguro
+        events = response;
       } else {
-        events = allEvents; // ← también es array seguro
+        events = allEvents;
       }
 
-      // 🔥 Filtrar desde memoria (no desde API)
       const filteredEvents = events.filter((event) =>
         event.start.startsWith(formattedDate)
       );
