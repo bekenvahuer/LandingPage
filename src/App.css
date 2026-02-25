@@ -241,6 +241,17 @@ body {
   background: #f0f4ff;
 }
 
+.service-item.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.service-item.disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
 .service-info h3 {
   font-size: 16px;
   color: #1a202c;

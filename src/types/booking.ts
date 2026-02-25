@@ -4,6 +4,7 @@ export interface Service {
     nickname: string;
     duration: string;
     price: number;
+    disabled?: boolean;
 }
 
 export interface BookingData {
