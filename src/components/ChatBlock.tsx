@@ -10,6 +10,7 @@ const images = [img1, img2, img3];
 
 const ChatBlock: React.FC = () => {
   const [groupIndex, setGroupIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false)
 
   const titles = [
     ["Redes Sociales"],
@@ -24,10 +25,13 @@ const ChatBlock: React.FC = () => {
         text=""
         groupIndex={groupIndex}
         setGroupIndex={setGroupIndex}
+        isPaused={isPaused}
       />
       <ImageBlock
         src={images[groupIndex]}
         alt="Imagen dinámica"
+        isPaused={isPaused}
+        setIsPaused={setIsPaused}
       />
     </section>
   );

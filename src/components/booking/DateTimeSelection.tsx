@@ -189,23 +189,21 @@ const DateTimeSelection: React.FC<DateTimeSelectionProps> = ({
               <p className="no-slots">No hay horarios disponibles para este día</p>
             ) : (
               <div className="time-slots animate-fade-in">
-                {timeSlots.map((time) => {
+                {timeSlots
+                  .filter(time => !bookedHours.includes(time)) // 👈 FILTRAMOS AQUÍ
+                  .map((time) => {
 
-                  const isBooked = bookedHours.includes(time);
-
-                  return (
-                    <button
-                      key={time}
-                      disabled={isBooked}
-                      className={`time-slot 
-                  ${selectedTime === time ? 'selected' : ''} 
-                  ${isBooked ? 'disabled' : ''}`}
-                      onClick={() => !isBooked && onSelectTime(time)}
-                    >
-                      {time}
-                    </button>
-                  );
-                })}
+                    return (
+                      <button
+                        key={time}
+                        className={`time-slot 
+                          ${selectedTime === time ? 'selected' : ''}`}
+                        onClick={() => onSelectTime(time)}
+                      >
+                        {time}
+                      </button>
+                    );
+                  })}
               </div>
             )}
           </>

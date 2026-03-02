@@ -7,13 +7,15 @@ interface TextBlockProps {
   text: string;
   groupIndex?: number;
   setGroupIndex?: React.Dispatch<React.SetStateAction<number>>;
+  isPaused?: boolean;
 }
 
 const TextBlock: React.FC<TextBlockProps> = ({
   titles,
   text,
   groupIndex: externalGroupIndex,
-  setGroupIndex: externalSetGroupIndex
+  setGroupIndex: externalSetGroupIndex,
+  isPaused = false,
 }) => {
   const [internalGroupIndex, setInternalGroupIndex] = useState(0);
   const groupIndex = externalGroupIndex ?? internalGroupIndex;
@@ -28,7 +30,7 @@ const TextBlock: React.FC<TextBlockProps> = ({
   );
 
   useEffect(() => {
-    if (!titles.length) return;
+    if (!titles.length || isPaused) return;
 
     const speed = isDeleting ? 40 : 80;
 
@@ -36,7 +38,6 @@ const TextBlock: React.FC<TextBlockProps> = ({
       const currentLine = currentGroup[lineIndex];
 
       if (!isDeleting) {
-        // ESCRIBIENDO
         if (charIndex < currentLine.length) {
           setDisplayedLines(prev => {
             const updated = [...prev];
@@ -53,7 +54,6 @@ const TextBlock: React.FC<TextBlockProps> = ({
           }
         }
       } else {
-        // BORRANDO
         if (charIndex > 0) {
           setDisplayedLines(prev => {
             const updated = [...prev];
@@ -66,7 +66,6 @@ const TextBlock: React.FC<TextBlockProps> = ({
             setLineIndex(prev => prev - 1);
             setCharIndex(currentGroup[lineIndex - 1].length);
           } else {
-            // CAMBIAR DE GRUPO
             setIsDeleting(false);
             setGroupIndex(prev => (prev + 1) % titles.length);
             setLineIndex(0);
@@ -78,7 +77,7 @@ const TextBlock: React.FC<TextBlockProps> = ({
     }, speed);
 
     return () => clearTimeout(timeout);
-  }, [charIndex, lineIndex, isDeleting, groupIndex, titles]);
+  }, [charIndex, lineIndex, isDeleting, groupIndex, titles, isPaused]);
 
   return (
     <section className="text-block sectionInfo"
