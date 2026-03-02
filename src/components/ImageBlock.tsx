@@ -5,7 +5,7 @@ interface ImageBlockProps {
   setIsPaused?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const ImageBlock: React.FC<ImageBlockProps> = ({ src, alt, isPaused, setIsPaused }) => {
+const ImageBlock: React.FC<ImageBlockProps> = ({ src, alt, setIsPaused }) => {
   const handleToggle = () => {
     if (setIsPaused) {
       setIsPaused(prev => !prev);
